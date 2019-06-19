@@ -3,6 +3,8 @@ import * as Permissions from 'expo-permissions';
 import { Camera } from 'expo-camera';
 import { StyleSheet, Text, View, TouchableOpacity, Dimensions } from 'react-native';
 
+import CaptureButton from 'app/components/CaptureButton';
+
 class App extends React.PureComponent {
 
   constructor(props) {
@@ -20,6 +22,13 @@ class App extends React.PureComponent {
       hasCameraPermission: status === 'granted'
     });
   }
+
+  snap = async() => {
+    if(this.camera) {
+      let photo  = await this.camera.takePictureAsync();
+      console.log(photo);
+    }
+  }
   
   render() {
     const { hasCameraPermission } = this.state;
@@ -30,21 +39,15 @@ class App extends React.PureComponent {
     } else {
       return (
         <View style={styles.container }>
-          <Camera style={styles.camera} type={this.state.type}>
+          <Camera
+            style={styles.camera}
+            type={this.state.type}
+            ref = {ref => {
+              this.camera = ref;
+            }}
+          >
           </Camera>
-          <View>
-            <TouchableOpacity
-              onPress={() => {
-                this.setState({
-                  type:
-                    this.state.type === Camera.Constants.Type.back
-                      ? Camera.Constants.Type.front
-                      : Camera.Constants.Type.back,
-                });
-              }}>
-                <Text style={{ fontSize: 18, marginBottom: 10 }}> Flip </Text>
-              </TouchableOpacity>
-            </View>
+          <CaptureButton snap={this.snap} />
         </View>
       );
     }
