@@ -38,7 +38,7 @@ class ConfirmScreen extends React.PureComponent {
           }} 
           source={{uri}} />
           <TouchableOpacity style={styles.confirmBtn}>
-            <Button title="Confirm Selection" onPress={this.processImage} />
+            <Button style={{padding: "2.5 5"}} title="Confirm Selection" onPress={this.processImage} />
           </TouchableOpacity>
       </View>
     );
@@ -54,7 +54,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     paddingTop: 5,
-    height: 100,
   }
 });
 
