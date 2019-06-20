@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Dimensions } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-export default CaptureButton = ({ snap }) => (
+export default ResultImage = ({ snap }) => (
   <View style={styles.buttonContainer}>
     <TouchableOpacity
       style={styles.cameraIcon}
