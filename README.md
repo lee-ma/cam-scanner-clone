@@ -3,7 +3,7 @@ This is a very basic React Native implementation of the Cam Scanner app that all
 
 As of August 2019, the App when run in Expo is able to take an image and return greyscale, but only if the background is dark and without any extra patterns or textures.
 
-There are 2 major bugs at the moment, and I may come around to fix them later on if I have time...
+#### There are 2 major bugs at the moment, and I may come around to fix them later on if I have time...
 
 ## To run locally
 1. Clone the repo
