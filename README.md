@@ -5,6 +5,8 @@ As of August 2019, the App when run in Expo is able to take an image and return 
 
 #### There are 2 major bugs at the moment, and I may come around to fix them later on if I have time...
 
+Backend Repo: https://github.com/lee-ma/scanner-backend
+
 ## To run locally
 1. Clone the repo
 2. Run `expo start` in the directory
