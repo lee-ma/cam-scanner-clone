@@ -13,5 +13,5 @@ There are a lot of bugs at the moment, and I may come around to fix them later o
 5. Press Confirm and view greyscale image if successful
 
 ## TODO:
-1. Figure out why the API can only serve an image properly if the background is plain and without any extra patterns/textures
+1. Figure out why the API can only serve a resulting greyscale image properly if the background is plain and without any extra patterns/textures
 2. Figure out why the Camera takes so long to take a picture
