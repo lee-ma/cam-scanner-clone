@@ -1,5 +1,16 @@
 import React from 'react';
+import {decode as atob, encode as btoa} from 'base-64';
 import { StyleSheet, Text, View, TouchableOpacity, Dimensions, Image, Button } from 'react-native';
+
+
+function arrayBufferToBase64(buffer) {
+  var binary = '';
+  var bytes = [].slice.call(new Uint8Array(buffer));
+
+  bytes.forEach((b) => binary += String.fromCharCode(b));
+
+  return window.btoa(binary);
+};
 
 class ConfirmScreen extends React.PureComponent {
   static navigationOptions = {
@@ -17,12 +28,32 @@ class ConfirmScreen extends React.PureComponent {
     super(props);
 
     this.state = {
-      coordinates: null
+      grayscale: null
     }
   }
 
-  processImage = () => {
-    console.log(photo);
+  processImage = (photo) => {
+
+    fetch('https://tranquil-atoll-18580.herokuapp.com/scan', {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }, 
+      method: 'POST',
+      body: JSON.stringify({
+        'image': photo.base64
+      })
+    })
+    .then(response => response.json())
+    .then((response) => {
+
+      console.log(response);
+
+      const image = response.image;
+
+      this.props.navigation.navigate('Result', {image});
+    })
+    .catch(error => console.log(error));
   }
 
   render() {
@@ -38,7 +69,7 @@ class ConfirmScreen extends React.PureComponent {
           }} 
           source={{uri}} />
           <TouchableOpacity style={styles.confirmBtn}>
-            <Button style={{padding: "2.5 5"}} title="Confirm Selection" onPress={this.processImage} />
+            <Button style={{padding: "2.5 5"}} title="Confirm Selection" onPress={this.processImage(photo)} />
           </TouchableOpacity>
       </View>
     );

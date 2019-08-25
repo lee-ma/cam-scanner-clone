@@ -1,16 +1,28 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Dimensions } from 'react-native';
+import { StyleSheet, Image, View, TouchableOpacity, Dimensions } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-export default ResultImage = ({ snap }) => (
-  <View style={styles.buttonContainer}>
-    <TouchableOpacity
-      style={styles.cameraIcon}
-      onPress={snap}>
-      <Text style={styles.text}><MaterialCommunityIcons name="circle-slice-8" size={48} color="white"/></Text>
-    </TouchableOpacity>
-  </View>
-);
+
+class Result extends React.PureComponent{
+  constructor(props){
+    super(props);
+  }
+
+  render() {
+    const { navigation } = this.props;
+    const photo = navigation.getParam('image', {});
+    return(
+      <View style={styles.buttonContainer}>
+        <Image 
+        source={{uri: `data:image/jpeg;base64,${photo}`}} 
+        style={{flex:1, width: Dimensions.get('window').width, height: Dimensions.get('window').width * 4 / 3}} 
+        resizeMode="contain" />
+      </View>
+    )
+  }
+}
+
+export default Result
 
 const styles = StyleSheet.create({
   cameraIcon: {

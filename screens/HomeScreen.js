@@ -36,7 +36,7 @@ class HomeScreen extends React.PureComponent {
 
   snap = async() => {
     if(this.camera) {
-      let photo  = await this.camera.takePictureAsync();
+      let photo  = await this.camera.takePictureAsync({ base64: true});
       this.props.navigation.navigate('Confirmation', {photo});
     }
   }
