@@ -18,6 +18,6 @@ Backend Repo: https://github.com/lee-ma/scanner-backend
 1. Figure out why the API can only serve a resulting greyscale image properly if the background is plain and without any extra patterns/textures
 2. Figure out why the Camera takes so long to take a picture
 
-## *Potential* Future Improvements:
+## \*Potential\* Future Improvements:
 1. Save locally and to Google Drive
 2. Allow users to save to their account, will have to set up database for users and file storage like S3, so I might not get around to this...
